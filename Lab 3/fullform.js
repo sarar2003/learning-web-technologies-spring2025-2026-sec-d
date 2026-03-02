@@ -30,8 +30,8 @@ submitBtn.addEventListener("click", function (e) {
     return;
   }
   let year = dob.split("-")[0];
-  if (year < 1900 || year > 2016) {
-    console.log("Year must be 1900-2016");
+  if (year < 1900 || year > 2030) {
+    console.log("Year must be 1900-2030");
     return;
   }
 
