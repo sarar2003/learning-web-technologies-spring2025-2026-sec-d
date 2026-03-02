@@ -6,9 +6,10 @@
     <title>Blood Group</title>
   </head>
   <body>
-    <form action="">
+    <form action="" id="form">
       <label for="Blood_group">Blood Group</label>
-      <select name="Blood_group" id="Blood_group">
+      <select name="Blood_group" id="Blood_group" required>
+        <option value="" disabled selected>Select your blood group</option>
         <option value="A+">A+</option>
         <option value="A-">A-</option>
         <option value="B+">B+</option>
@@ -19,7 +20,8 @@
         <option value="AB-">AB-</option>
       </select>
       <hr />
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" id="submit-btn" />
     </form>
+    <script src="bg.js"></script>
   </body>
 </html>
