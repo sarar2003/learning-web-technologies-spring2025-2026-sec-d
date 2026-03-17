@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+    padding: 30px;
+}
+
+.container {
+    border: 2px solid #333;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
+h1{
+    text-align: center;
+}
+input {
+    display: block;
+    margin-top: 5px;
+    padding: 8px;
+    width: 90%;
+}
+
+input[readonly] {
+    background-color: #ddd;
+    border: 1px solid #777;
+    cursor: not-allowed;
+}
