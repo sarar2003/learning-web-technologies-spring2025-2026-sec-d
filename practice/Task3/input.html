@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+  </head>
+  <body>
+    <form>
+      <label for="age">Your Age:</label><br />
+      <input type="number" id="age" name="age" />
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+      const ageInput = document.getElementById("age");
+      const msg = document.getElementById("msg");
+
+      ageInput.addEventListener("input", () => {
+        const age = parseInt(ageInput.value);
+        if (age < 40) {
+          msg.style.color = "black";
+          msg.textContent =
+            "To be a part of the community, you need to at least 40";
+        } else if (age >= 40 && age <= 50) {
+          msg.style.color = "black";
+          msg.textContent = "You are the youngsters of this community";
+        } else if (age > 50) {
+          msg.style.color = "red";
+          msg.textContent = "Top level members of the group";
+        }
+      });
+    </script>
+  </body>
+</html>

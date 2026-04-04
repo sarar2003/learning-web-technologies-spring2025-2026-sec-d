@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="validate()">
+      <label for="fname">First Name:</label><br />
+      <input type="text" id="fname" name="fname" /><br /><br />
+
+      <label for="lname">Last Name:</label><br />
+      <input type="text" id="lname" name="lname" /><br /><br />
+
+      <button type="submit" id="sub-btn">Submit</button>
+    </form>
+    <script>
+      const form = document.getElementsByTagName("form");
+      const subBtn = document.getElementById("sub-btn");
+
+      subBtn.addEventListener("click", () => {
+        const fname = document.getElementById("fname").value; //  ID dhore call kora hoise
+        const lname = document.getElementById("lname").value;
+
+        if (fname === "" || lname === "") {
+          alert("Both fields must not be empty!");
+          return false;
+        } else if (fname.length < 2 || lname < 2) {
+          alert("Each field must have at least 2 characters!");
+          return false;
+        }
+      });
+    </script>
+  </body>
+</html>
