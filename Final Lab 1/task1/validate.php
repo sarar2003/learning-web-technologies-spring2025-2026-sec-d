@@ -14,7 +14,10 @@ else if(!$uname.include("." || !$uname.include())){
 else if(strlen($password)<8){
     $error="Password must be at least 8 characters long.";
 }
-else if ( $password) {
+else if ( strpos($password, '@') === false &&
+    strpos($password, '#') === false &&
+    strpos($password, '$') === false &&
+    strpos($password, '%') === false) {
     $error = "Password must contain at least one special character: @, #, $, or %.";
 }
 if ($error != "") {
