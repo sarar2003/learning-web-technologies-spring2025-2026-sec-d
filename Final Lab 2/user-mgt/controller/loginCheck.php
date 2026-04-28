@@ -7,13 +7,20 @@
         if($username == "" || $password == ""){
                 echo "null username/password!";
         }else{
-            if($username == $_SESSION['user']['username'] && $password == $_SESSION['user']['password']){
-                //$_SESSION['status'] = true;
-                $_SESSION['username'] = $username;
+            $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
+            $found = false;
 
-                setcookie('status', true, time()+3000, '/');
-                header('location: ../view/home.php');
-            }else{
+            foreach($users as $user){
+                if($user['username'] == $username && $user['password'] == $password){
+                    $found = true;
+                    $_SESSION['username'] = $username;
+                    // setcookie('status', true, time()+3000, '/');
+                    header('location: ../view/home.php');
+                    break;
+                }
+            }
+
+            if(!$found){
                 echo "invalid user!";
             }
         }

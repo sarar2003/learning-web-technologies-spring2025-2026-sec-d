@@ -21,27 +21,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>User Details</title>
+    <title>Update User</title>
 </head>
 <body>
 
-        <h1>User Details</h1>
+        <h1>Update User</h1>
         <a href='user_list.php'>Back </a> |
         <a href='../controller/logout.php'>logout</a> 
         <br>
 
-        <table border=1>
-            <tr>
-                <th>ID</th>
-                <th>USERNAME</th>
-                <th>EMAIL</th>
-            </tr>
-            <tr>
-                <td><?=$user['id']?></td>
-                <td><?=$user['username']?></td>
-                <td><?=$user['email']?></td>
-            </tr>
-        </table>
+    <form method="post" action="../controller/updateCheck.php">
+        Id:         <input type="text" name="id" readonly value="<?=$user['id']?>"/> <br>
+        Username:   <input type="text" name="username" value="<?=$user['username']?>"/> <br>
+        Email:      <input type="email" name="email" value="<?=$user['email']?>"/> <br>
+                    <input type="submit" name="submit" value="Update"/>
+    </form>
 </body>
 </html>
 

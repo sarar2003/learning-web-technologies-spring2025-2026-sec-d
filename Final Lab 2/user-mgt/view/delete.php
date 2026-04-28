@@ -21,14 +21,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>User Details</title>
+    <title>Delete User</title>
 </head>
 <body>
 
-        <h1>User Details</h1>
+        <h1>Delete User</h1>
         <a href='user_list.php'>Back </a> |
         <a href='../controller/logout.php'>logout</a> 
         <br>
+
+        <p>Are you sure you want to delete this user?</p>
 
         <table border=1>
             <tr>
@@ -42,6 +44,12 @@
                 <td><?=$user['email']?></td>
             </tr>
         </table>
+        <br>
+
+        <form method="post" action="../controller/delete.php">
+            <input type="hidden" name="id" value="<?=$user['id']?>"/>
+            <input type="submit" name="submit" value="Confirm Delete"/>
+        </form>
 </body>
 </html>
 

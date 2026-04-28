@@ -1,8 +1,9 @@
 <?php
     session_start();
     
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
+    $id = isset($_GET['id']) ? $_GET['id'] : (isset($_POST['id']) ? $_POST['id'] : null);
+    
+    if($id !== null){
         
         
         $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];

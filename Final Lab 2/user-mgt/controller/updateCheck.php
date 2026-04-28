@@ -13,10 +13,10 @@
             $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
             
             
-            for($i = 0; $i < count($users); $i++){
-                if($users[$i]['id'] == $id){
-                    $users[$i]['username'] = $username;
-                    $users[$i]['email'] = $email;
+            foreach($users as &$user){
+                if($user['id'] == $id){
+                    $user['username'] = $username;
+                    $user['email'] = $email;
                     break;
                 }
             }

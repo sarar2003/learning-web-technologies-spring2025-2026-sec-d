@@ -12,7 +12,12 @@
            $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
            
            
-           $newId = count($users) + 1;
+           $newId = 1;
+           foreach($users as $u){
+               if($u['id'] >= $newId){
+                   $newId = $u['id'] + 1;
+               }
+           }
            
            
            $user = [
@@ -28,6 +33,7 @@
            
            $_SESSION['users'] = $users;
            $_SESSION['username'] = $username;
+           setcookie('status', true, time()+3000, '/');
            
            header('location: ../view/user_list.php');
         }
