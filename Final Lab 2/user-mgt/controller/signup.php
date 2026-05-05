@@ -4,19 +4,19 @@ $isAjax = true;
 
 
 if(isset($_POST['submit'])){
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $email = $_POST['email'] ?? '';
+    $u = $_POST['username'] ?? '';
+    $p = $_POST['password'] ?? '';
+    $e = $_POST['email'] ?? '';
 
-    if($username === '' || $password === '' || $email === ''){
+    if($u === '' || $p === '' || $e === ''){
         $response = ['success' => false, 'message' => 'Null username/password/email!'];
     } else {
         require_once '../model/User.php';
         $userModel = new UserModel();
-        if ($userModel->create($username, $password, $email)) {
-            $_SESSION['username'] = $username;
+        if ($userModel->create($u, $p, $e)) {
+            $_SESSION['username'] = $u;
             setcookie('status', true, time() + 3000, '/');
-            $response = ['success' => true, 'message' => 'User created successfully', 'redirect' => '../view/user_list.php'];
+            $response = ['success' => true, 'message' => 'User created successfully'];
         } else {
             $response = ['success' => false, 'message' => 'Signup failed'];
         }
@@ -29,13 +29,13 @@ if(isset($_POST['submit'])){
         exit;
     } else {
         if($response['success']){
-            header('location: ' . $response['redirect']);
+            header('location: ../view/user_list.php');
         } else {
             echo $response['message'];
         }
     }
 } else {
-    $response = ['success' => false, 'message' => 'Invalid request! Please submit form'];
+    $response = ['success' => false, 'message' => 'Invalid request!'];
     if($isAjax){
         header('Content-Type: application/json');
         echo json_encode($response);
@@ -46,3 +46,4 @@ if(isset($_POST['submit'])){
 }
 
 ?>
+

@@ -4,12 +4,16 @@
     <title>Login</title>
 </head>
 <body>
-
-    <form method="post" action="../controller/loginCheck.php" enctype="multipart/form-data">
-        Username:   <input type="text" name="username" value=""/> <br>
-        Password:   <input type="password" name="password" value=""/> <br>
-                    <input type="submit" name="submit" value="Submit"/>
-                      <a href="signup.php">Signup</a>
+    <form id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <br>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <br>
+        <button type="submit">Submit</button>
+        <a href="signup.php">Signup</a>
     </form>
+
+    <script src="asset/login.js"></script>
 </body>
 </html>

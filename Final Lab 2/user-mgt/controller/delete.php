@@ -1,25 +1,31 @@
 <?php
-    session_start();
-    
-    $id = isset($_GET['id']) ? $_GET['id'] : (isset($_POST['id']) ? $_POST['id'] : null);
-    
-    if($id !== null){
-        
-        
-        $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
-        
-        
-        $newUsers = [];
-        for($i = 0; $i < count($users); $i++){
-            if($users[$i]['id'] != $id){
-                $newUsers[] = $users[$i];
-            }
-        }
-        
-        
-        $_SESSION['users'] = $newUsers;
-    }
-    
+$isAjax = true;
 
-    header('location: ../view/user_list.php');
-?>
+
+require_once '../model/User.php';
+$userModel = new UserModel();
+
+$id = $_POST['id'] ?? $_GET['id'] ?? null;
+
+if($id !== null){
+    if ($userModel->delete($id)) {
+        $response = ['success' => true, 'message' => 'User deleted!'];
+    } else {
+        $response = ['success' => false, 'message' => 'Delete failed'];
+    }
+} else {
+    $response = ['success' => false, 'message' => 'No ID'];
+}
+
+
+if($isAjax){
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+} else {
+    if($response['success']){
+        header('location: ../view/user_list.php');
+    } else {
+        echo $response['message'];
+    }
+}
